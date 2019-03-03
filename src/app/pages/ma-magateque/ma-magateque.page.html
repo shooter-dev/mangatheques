@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>maMagateque</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    
+  <ion-list>
+    <button (click)="expandItem(item)" ion-item *ngFor="let item of series">
+      <img src="http://placehold.it/100x125">
+      <h2>{{item.name}}</h2>
+      <p>Hayao Miyazaki • 1988</p>
+      <accordion-list>
+        <ion-item-sliding  >
+            <ion-item>
+                <img src="http://placehold.it/75x100">
+              <ion-label>tome.code</ion-label>
+              <p>tome.name</p>
+              <p>tome.volume</p>
+              <p>tome.date_vf</p>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option (click)="removeItem()" danger>  <ion-icon name="trash"></ion-icon>  </ion-item-option>
+              <ion-item-option>  <ion-icon name="nutrition"></ion-icon>  </ion-item-option>
+              <ion-item-option >  <ion-icon name="contacts"></ion-icon>  </ion-item-option>
+              <ion-item-option>  <ion-icon name="ribbon"></ion-icon>  </ion-item-option>
+              <ion-item-option>  <ion-icon name="share"></ion-icon>  </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+      </accordion-list>
+      <button ion-button clear item-end>View</button>
+    </button>
+  </ion-list>
+  <ion-list>
+        <button (click)="expandItem(item)" ion-item *ngFor="let item of items">
+          <ion-thumbnail item-start>
+            <img src="http://placehold.it/100">
+          </ion-thumbnail>
+          <h2>Totoro</h2>
+          <p>Hayao Miyazaki • 1988</p>
+          <accordion-list [height]="itemHeight" [expanded]="item.expanded">
+              <ion-item>
+                <h2>Hello Everyone</h2>
+              </ion-item>
+              <ion-item>
+                <h2>Hello Everyone</h2>
+              </ion-item>
+          </accordion-list>
+          <button class="gg" ion-button clear item-end>View</button>
+        </button>
+      </ion-list>
+</ion-content>
