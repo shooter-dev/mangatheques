@@ -18,8 +18,8 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'Profile',
+      url: '/members/dashboard',
       icon: 'list'
     }
   ];

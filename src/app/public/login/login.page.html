@@ -5,6 +5,16 @@
 </ion-header>
  
 <ion-content padding>
-  <ion-button (click)="login()" expand="block">Login</ion-button>
+  <form [formGroup]="userLogin" (ngSubmit)="login()">
+      <ion-item>
+        <ion-label>@ email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="secondary" ion-button type="submit" block>Se connecter</ion-button>
+    </form>
   <ion-button expand="block" color="secondary" routerLink="/register" routerDirection="forward">Register</ion-button>
 </ion-content>
