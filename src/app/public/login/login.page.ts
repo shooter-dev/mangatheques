@@ -24,9 +24,9 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    // this.user.email = this.userLogin.value.email;
-    // this.user.password = this.userLogin.value.password;
-    // this.authService.login(this.user);
+    this.user.email = this.userLogin.value.email;
+    this.user.password = this.userLogin.value.password;
+    this.authService.login(this.user);
   }
 
 }

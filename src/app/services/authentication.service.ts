@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../entities/user.entity';
+import { ApiMangathequesService } from './api-mangatheques.service';
 
 const TOKEN_KEY = 'auth-token';
 
@@ -16,7 +17,8 @@ export class AuthenticationService {
   authenticationState = new BehaviorSubject(false);
 
   constructor(private storage: Storage,
-    private plt: Platform) {
+    private plt: Platform,
+    private api: ApiMangathequesService) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -31,12 +33,11 @@ export class AuthenticationService {
   }
 
   login(user: User) {
-    console.log(user);
-    // const r = this.http.get(this.apiUrl + 'login');
-    // console.log(r);
-
-    return this.storage.set(TOKEN_KEY, 'Bearer 1234567').then(() => {
-      this.authenticationState.next(true);
+    this.api.setApiPost('/login', user).subscribe((data) => {
+      this.storage.set('utilisateur', data.user);
+      return this.storage.set(TOKEN_KEY, data.token).then(() => {
+        this.authenticationState.next(data.auth);
+      });
     });
   }
 
